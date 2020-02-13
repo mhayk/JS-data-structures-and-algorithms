@@ -1,0 +1,14 @@
+{
+  "name": "JS-data-structures-and-algorithms",
+  "version": "1.0.0",
+  "description": "JS Data Structure and Algorithms",
+  "main": "index.js",
+  "repository": "git@github.com:mhayk/JS-data-structures-and-algorithms.git",
+  "author": "Mhayk Whandson <hi@mhayk.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1"
+  }
+}
