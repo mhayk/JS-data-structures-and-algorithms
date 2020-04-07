@@ -1,3 +1,11 @@
+const Colors = {
+  // This represents that the vertex has not been visited.
+  WHITE: 0,
+  // This represents that the vertex has been visited but not explored.
+  GREY: 1,
+  // This represents that the vertex has been completely explored.
+  BLACK: 2,
+};
 class Graph {
   constructor(isDirected = false) {
     this.isDirected = isDirected;
@@ -75,4 +83,42 @@ graph.addEgde('B', 'F');
 
 graph.addEgde('E', 'I');
 
-console.log(graph.toString());
+console.log(graph.toString(), '\n----');
+
+const initializeColor = (vertices) => {
+  const color = {};
+  for (let i = 0; i < vertices.length; i++) {
+    color[vertices[i]] = Colors.WHITE;
+  }
+  return color;
+};
+
+const breadthFirstSearch = (graph, startVertex, callback) => {
+  const vertices = graph.getVertices();
+  const adjList = graph.getAdjList();
+  const color = initializeColor(vertices);
+  const queue = [];
+
+  queue.push(startVertex);
+
+  while (queue.length > 0) {
+    const u = queue.shift();
+    const neighbors = adjList.get(u);
+    color[u] = Colors.GREY;
+
+    for (let i = 0; i < neighbors.length; i++) {
+      const w = neighbors[i];
+      if (color[w] === Colors.WHITE) {
+        color[w] = Colors.GREY;
+        queue.push(w);
+      }
+    }
+
+    color[u] = Colors.BLACK;
+    if (callback) { callback(u); }
+  }
+};
+
+const printVertex = (value) => console.log(`Visited vertex: ${value}`);
+
+breadthFirstSearch(graph, myVertices[0], printVertex);
