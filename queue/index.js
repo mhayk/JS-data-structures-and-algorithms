@@ -49,8 +49,25 @@ class Queue {
 
     let objString = `${this.items[this.lowestCount]}`;
     for (let i = this.lowestCount + 1; i < this.count; i++) {
-      objString = `{objString},${this.items[i]}`;
+      objString = `${objString},${this.items[i]}`;
     }
     return objString;
   }
 }
+
+const queue = new Queue();
+queue.enqueue('Mhayk');
+queue.enqueue('Alana');
+queue.enqueue('Alice');
+
+console.log(queue.isEmpty());
+console.log(queue.toString());
+
+queue.enqueue('Edimar');
+console.log(queue.toString());
+console.log(queue.size());
+
+queue.dequeue();
+queue.dequeue();
+
+console.log(queue.toString());
