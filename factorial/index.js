@@ -1,14 +1,9 @@
-let total = 1;
 function findFactorialRecursive(number) {
     if (number == 0)
         return 1;
 
-    if (number == 1) {
-        return total;
-    }
 
-    total *= number;
-    return findFactorialRecursive(number - 1)
+    return number * findFactorialRecursive(number - 1)
 }
 
 function findFactorialIterative(number) {
