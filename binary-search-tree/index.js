@@ -9,20 +9,66 @@
 // https://visualgo.net/en/bst
 
 
-import Node from './Node';
-
-class BinaryTree {
+class Node {
   constructor(value) {
-    this.root = new Node(value);
-  }
-
-  insert(value) {
-    const node = new Node(value);
-
-    if (this.root.value < value) {}
+    this.value = value;
+    this.left = null;
+    this.right = null;
   }
 }
 
-const binaryTree = new BinaryTree(2);
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
 
-console.log(JSON.stringify(binaryTree));
+  insert(value) {
+    const newNode = new Node(value);
+
+    if (this.root === null) {
+      this.root = newNode;
+      return;
+    } else {
+      let currentNode = this.root;
+      while (true) {
+        if (value < currentNode.value) {
+          if (currentNode.left === null) {
+            currentNode.left = newNode;
+            return;
+          } else {
+            currentNode = currentNode.left;
+          }
+        }
+
+        if (value > currentNode.value) {
+          if (currentNode.right === null) {
+            currentNode.right = newNode;
+            return;
+          } else {
+            currentNode = currentNode.right;
+          }
+        }
+      }
+    }
+  }
+
+  lookup(value) {
+  }
+}
+
+const bst = new BinarySearchTree();
+
+console.log(JSON.stringify(bst));
+
+bst.insert(9);
+bst.insert(4);
+bst.insert(6);
+bst.insert(20);
+bst.insert(170);
+bst.insert(15);
+bst.insert(1);
+
+console.log(JSON.stringify(bst));
+//    9
+// 4     20
+//1 6  15 170
