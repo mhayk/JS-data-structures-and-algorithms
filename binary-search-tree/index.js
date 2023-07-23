@@ -128,6 +128,18 @@ class BinarySearchTree {
     console.log(list)
     return list;
   }
+
+  DFSPostOrder() {
+    this.traversePostOrder(this.root, []);
+  }
+
+  traversePostOrder(node, list) {
+    if (node.left) this.traversePostOrder(node.left, list);
+    if (node.right) this.traversePostOrder(node.right, list);
+    list.push(node.value);
+    console.log(list);
+    return list;
+  }
 }
 
 const bst = new BinarySearchTree();
@@ -151,3 +163,4 @@ bst.breadthFirstSearch();
 bst.breadthFirstSearchRecursive([bst.root], []);
 bst.traverseInOrder(bst.root, []);
 bst.traversePreOrder(bst.root, []);
+bst.traversePostOrder(bst.root, []);
