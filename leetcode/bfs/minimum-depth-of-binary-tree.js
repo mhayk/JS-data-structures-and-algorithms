@@ -15,7 +15,6 @@ var minDepth = function (root) {
     if (!root) return 0
 
     let queue = [[root, 1]]
-    let depth = 1
 
     while (queue.length) {
         let [node, depth] = queue.shift()
